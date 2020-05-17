@@ -3,7 +3,7 @@ astroid==2.3.3
 certifi==2019.11.28
 chardet==3.0.4
 colorama==0.4.3
-Django==3.0
+django>=3.0.3
 fpdf==1.7.2
 html5lib==1.0.1
 idna==2.8
