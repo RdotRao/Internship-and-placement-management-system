@@ -1,0 +1,187 @@
+{%load static %}{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{%block title%}Welcome | {{user.first_name}}{%endblock%}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .header {
+            overflow: hidden;
+            background-color: transparent;
+            padding: 10px;
+        }
+        
+        .loggedin {
+            background-color: black;
+            font-family: sans-serif;
+            font-weight: lighter;
+            color: white;
+            text-align: right;
+            line-height: 2px;
+        }
+        
+        .header a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 25px 12px 12px 12px;
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 15px;
+            border-radius: 4px;
+        }
+        
+        .header a.logo {
+            font-weight: bold;
+        }
+        
+        .header a:hover {
+            padding: 20px 10px 10px 10px;
+            background-color: #3e8e41;
+            color: black;
+        }
+        
+        .header a.active {
+            background-color: rgb(133, 30, 30);
+            color: white;
+        }
+        
+        .header-right {
+            float: right;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .header a {
+                float: none;
+                display: block;
+                text-align: center;
+            }
+            .header-right {
+                float: none;
+            }
+        }
+        
+        .dropbtn {
+            color: rgb(0, 0, 0);
+            padding: 22px;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+        }
+        
+        .dropdown {
+            float: left;
+            font-family: sans-serif;
+            font-weight: lighter;
+            background-color: transparent;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: transparent;
+            box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #3e8e41;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+            color: black;
+        }
+    </style>
+    <!--<script type="text/javascript">
+        window.history.forward();
+
+       onload="noback()"function noBack() {
+            window.history.forward();
+        }
+    </script>-->
+</head>
+
+<body onload="noback()" onpageshow="if(event.persisted)" onunload="">
+    <div class="header">
+        <img src="{%static 'logo.jpg' %}" width="70px" height="70px"></a>
+        <div class="header-right">
+            <a href="/">Home</a> 
+            <a href="/opportunity/generateNOC">Generate NOC</a>
+            {% if request.user.is_staff %}
+            <div class="dropdown">
+                <button class="dropbtn">Offer Letter[Coordinator]</button>            
+            <div class="dropdown-content">
+                <a href="/studentcoordinator/vol">Verify</a>
+                <a href="/studentcoordinator/uploadothersofferletter">Upload for Others</a>
+              
+            </div>
+            </div>
+            <a href="/opportunity/Applied">Applied Students</a>
+            <div class="dropdown">
+                <button class="dropbtn">Add Opportunity</button>
+                <div class="dropdown-content">
+                    <a href="internshipplusplacement">Internship+Placement</a>
+                    <a href="internship">Internship</a>
+                    <a href="placement">Placement</a>
+                </div>
+            </div>
+            <a href="{% url 'declareresult' %}">Declare Results</a>
+            
+            {%endif%}
+            <div class="dropdown">
+                <button class="dropbtn">Offer Letter</button>            
+            <div class="dropdown-content">
+                <a href='/opportunity/uploadofferletter'>Upload</a>
+                <a href='/opportunity/openOL'>Download</a>              
+            </div>
+            </div>
+            
+            <a href="/opportunity/showresult">Results</a>
+            <a href="/opportunity/showpassedopportunity">Passed Opportunity</a>
+            <div class="dropdown">
+                <button class="dropbtn">{{user.first_name}}</button>
+                <div class="dropdown-content">
+                    <a href="viewprofile">My Account</a>
+                    <a href="changepassword">Change Password</a>
+                    <a href="{% url 'logout' %} ">Logout</a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+    {%block content%} {%endblock%}
+
+</body>
+
+</html>
+{%endif%}

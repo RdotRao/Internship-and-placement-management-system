@@ -1,0 +1,59 @@
+{%extends 'studentbase.html'%} {%block content%}{%load static %}
+<h1><center>Company Details</center></h1>
+<header>
+<br><br>
+<style>
+    #submit{
+        width: 20em;  height: 2em;
+    }
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+    body {
+        background: -webkit-linear-gradient(left, #b6f3aeaf, #0ddacd4f);
+        background: linear-gradient(to right, #b6f3aeaf, #0ddacd4f);
+        font-family: 'Roboto', sans-serif;
+        height: auto;
+    }
+</style>
+{% for key, value in opportunity.items%}
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    th {
+      width: 50% ;
+      text-transform: capitalize;
+      
+    }
+    textarea{
+        resize: none;
+        overflow-y: scroll;
+        background: transparent;
+        border-collapse: collapse;
+    }
+</style>
+</header>
+<table style="width:70%" align="center">
+    <tr>
+        <th> <h2 style="color:grey;display:inline;">{{key}}</h2></th>
+        {% if key == 'details' %}
+            <th>
+                <textarea cols="50" rows="10" readonly>{{value}}</textarea>
+            </th>        
+        {% else %}
+            <th>
+                <h2> {{value}}</h2>
+            </th>
+        {% endif %}
+    </tr>
+</table>
+    
+{% endfor %}
+<br><br><br>
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="encode_company" value="{{encode_company}}">
+    <input type="submit" id="submit" value="Apply" style="margin-left: 40%">
+</form>
+<br><br>
+{%endblock%}

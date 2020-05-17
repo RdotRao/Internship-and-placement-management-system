@@ -1,0 +1,75 @@
+{%extends 'studentbase.html'%} {%block content%}{%load static %}
+<head>
+        <title>
+            NOC Generation
+        </title>
+        <style>
+            body
+            {
+                font-size: 1.3em;
+                line-height: 1.6em;
+                
+            }
+            p,span
+            {
+                margin: 5px;
+                padding: 5px;
+            }
+            table
+            {
+                text-align: left;
+                margin: 5px;
+                padding: 5px;
+            }
+        </style>
+        
+    </head>
+    <body>
+        {% if flag %}
+        <span style="color: red;">{{ error }}</span>
+        {% else %}
+        <u><h1 style="margin: 5px;padding: 5px;">Term and Condition</h2></u>
+        <p>
+        You have selected {{company}} for {{type}}.<br/>
+        As per Our Record: <br/>
+        <table>
+        
+        <tr>
+        <th>Job Role : </th>
+        <td>{{ role }}</td>
+        </tr>    
+        
+        <tr>
+        <th>Gross Package : </th>
+        <td> Rs. {{ package }} lacs per annum </td>
+        </tr>    
+        
+        <tr>
+        <th>Stipend : </th>
+        <td> Rs. {{ stipend }} </td>
+        </tr>    
+        
+        <tr>
+        <th>Bond-Term : </th>
+        <td>{{ bond }} year(s)</td>
+        </tr>    
+
+        </table>
+       <p>
+       If the Gross-Salary and Stipend don't match with offer letter issued by the company. Update it while uploading offer letter.
+       <br/><span style="color: red;">*If you have offer letter in hand to Upload then only select this option</span>
+        
+        <!--If Company as issued offer letter Please Upload it here. <input type="button" name="Upload" value="Upload">-->
+    </p> 
+
+    <span style="color: red;">
+        If you choose to move further with this selection, you are warned <br/>
+        &nbsp that you won't be able to partipate in any further rounds of any other company<br/><br/>
+        </span>
+        <a href="{%url 'generateNOC_final' opportunity=opp %}">Proceed</a> &nbsp;&nbsp; 
+        <a href="/opportunity/generateNOC">Nevermind</a>
+        </p>
+        {% endif %}
+        
+    </body>
+{%endblock%}

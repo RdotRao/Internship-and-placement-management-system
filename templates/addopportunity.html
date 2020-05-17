@@ -1,0 +1,72 @@
+{%extends 'studentcoordinator.html'%}
+<title>
+    {%block title%} Welcome | {{username}} {%endblock%}
+</title>
+
+
+{%block content%}{%load static %}
+<div class="loggedin">
+    <h4>
+        <center>Hi,{{username}}</center>
+    </h4>
+</div>
+<div class="opportunity_form">
+    <br><br>
+    <center>
+    {% if typeofopportunity == "both" %}    
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <input type="textbox" name="companyname" placeholder="Company Name"><br/><br/>
+        <input type="textbox" name="type" placeholder="Type"><br/><br/>
+        <input type="textbox" name="location" placeholder="Location"><br/><br/>
+        <input type="textbox" name="preferredlanguage" placeholder="Preferred Languages"><br/><br/>
+        <input type="textbox" name="preferredtoolsandtechnologies" placeholder="Preferred Tools and Technologies"><br/><br/>
+        <input type="textbox" name="package" placeholder="Package"><br/><br/>
+        <input type="textbox" name="stipend" placeholder="Stipend if any"><br/><br/>
+        <input type="textbox" name="bondterm" placeholder="Bond Term"><br/><br/>
+        <input type="textbox" name="intershipduration" placeholder="Intership Durati"><br/><br/>
+        <input type="textbox" name="deadline" placeholder="Dead Line"><br/><br/>
+        <input type="textbox" name="interviewdate" placeholder="Interview / Test Date"><br/><br/>
+        
+        <textarea name="detail" placeholder="Add Details"></textarea><br/><br/>
+        <input type="submit" class="ab" value="Add Opportunity"><br/>
+    </form>
+    {% elif typeofopportunity == "placement"%}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="textbox" name="companyname" placeholder="Company Name"><br/><br/>
+        <input type="textbox" name="type" placeholder="Type"><br/><br/>
+        <input type="textbox" name="location" placeholder="Location"><br/><br/>
+        <input type="textbox" name="package" placeholder="Package"><br/><br/>
+        <input type="textbox" name="bondterm" placeholder="Bond Term"><br/><br/>
+        <input type="textbox" name="deadline" placeholder="Dead Line"><br/><br/>
+        <input type="textbox" name="interviewdate" placeholder="Interview / Test Date"><br/><br/>
+        <input type="textbox" name="preferredlanguage" placeholder="Preferred Languages"><br/><br/>
+        <input type="textbox" name="preferredtoolsandtechnologies" placeholder="Preferred Tools and Technologies"><br/><br/>
+        
+        <textarea name="detail" placeholder="Add Details"></textarea><br/><br/>
+        <input type="submit" class="ab" value="Add Opportunity"><br/>
+    </form>
+    {% else %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="textbox" name="companyname" placeholder="Company Name"><br/><br/>
+        <input type="textbox" name="type" placeholder="Type"><br/><br/>
+        <input type="textbox" name="location" placeholder="Location"><br/><br/>
+        <input type="textbox" name="preferredlanguage" placeholder="Preferred Languages"><br/><br/>
+        <input type="textbox" name="stipend" placeholder="Stipend"><br/><br/>
+        <input type="textbox" name="intershipduration" placeholder="Intership Durati"><br/><br/>
+        <input type="textbox" name="deadline" placeholder="Dead Line"><br/><br/>
+        <input type="textbox" name="interviewdate" placeholder="Interview / Test Date"><br/><br/>
+        <input type="textbox" name="preferredtoolsandtechnologies" placeholder="Preferred Tools and Technologies"><br/><br/>
+        
+        <textarea name="detail" placeholder="Add Details"></textarea><br/><br/>
+        <input type="submit" class="ab" value="Add Opportunity"><br/>
+    </form>
+    {% endif %}
+</center>
+
+</div>
+
+{%endblock%}

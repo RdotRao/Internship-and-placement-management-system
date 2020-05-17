@@ -1,0 +1,5 @@
+"id","password","last_login","is_superuser","username","first_name","last_name","email","is_staff","is_active","date_joined"
+1,"pbkdf2_sha256$180000$WukD10SwZ2QL$8/6O8LFmi/IW+9b2xlBuKTub1GuRpV0xGUYAnYr3Rkg=","2020-01-02 11:47:44.8691+05:30",True,"admin","","","",True,True,"2020-01-02 11:33:46.65408+05:30"
+2,"pbkdf2_sha256$180000$s1Jwj8ZCfBEw$HydJNKHMbO4VfDmBoXfbmTTAgeJpfHWapwilvQQPUKE=","2020-01-10 11:05:50.262809+05:30",False,"16012101010","Kashish","Gandhi","",False,True,"2020-01-02 11:34:05+05:30"
+3,"pbkdf2_sha256$180000$si1WkT7En0v2$x3fY77iPXmXMPD0Obo2Xdnz12zDGyZldZwLTtImpS/U=","2020-01-10 11:06:16.817164+05:30",False,"16012101011","Gaurav","","",True,True,"2020-01-02 11:34:26+05:30"
+4,"pbkdf2_sha256$180000$j3Gua0YGpwo8$FSfqABd6odkQaCNBboiUFniC6Mm579ACAovAWbA4SJk=","2020-01-10 12:04:30.664545+05:30",True,"123456","Rahul","","",True,True,"2020-01-02 11:34:39+05:30"

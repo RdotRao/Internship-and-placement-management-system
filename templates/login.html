@@ -1,0 +1,32 @@
+{%extends 'base.html'%} {%load static %} {% block content %}
+
+<head>
+    <title>{%block title %}Login{%endblock%}</title>
+</head>
+
+<body onload="noback()" style="background-image: url({% static 'Images/wallpaper.jpg' %}); overflow-y: hidden;">
+<!--<div class="form_">
+    <h1 align="center" style="background-color: white; color:rgb(234,68,68); ">Training and Placement</h1>
+</div>-->
+<div class="login-page">
+    <div class="form" >
+        <h1 style="color: red;">Training and Placement</h1>
+        <center><img src="{%static 'logo.jpg' %}" alt="Ganpat University" width="102px "></center>
+        <p style="color:red;">{{message}}</p>
+        <br/>
+        <form class="login-form" action="" method="POST">
+            {% csrf_token %}
+            <input type="textbox" name="userid" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required><br/>
+            <input type="submit" class="ab" value="Login" name="submitbutton">
+            </form>
+            <form class="login-form" action="" method="GET">
+                <input type="submit" class="forgot" value="Forgot-Password?" name="submitbutton">
+             
+                </form>
+            
+
+    </div>
+</div>
+</body>
+{%endblock%}

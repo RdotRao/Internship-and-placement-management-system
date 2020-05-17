@@ -1,0 +1,16 @@
+{%extends 'studentcoordinator.html'%}
+<title>
+    {%block title%} Welcome | {{username}} {%endblock%}
+</title>
+
+
+{%block content%}{%load static %}
+<div class="loggedin">
+    <h4>
+        <center>Hi,{{username}}</center>
+    </h4>
+</div>
+<div>
+    <h1>Successfully Already Present !!! </h1>
+</div>
+{%endblock%}

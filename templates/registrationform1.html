@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    table {
+        width: 50%;
+        table-layout: fixed;
+        border: 1px solid black;
+    }
+    
+    .tbl-header {
+        background-color: rgba(0, 0, 0, 0.281);
+        align-items: center;
+    }
+    
+    .tbl-content {
+        height: 300px;
+        overflow-x: auto;
+        margin-top: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    
+    th {
+        text-align: center;
+        padding: 20px 15px;
+        font-weight: 500;
+        font-size: 15px;
+        color: rgb(0,0,0);
+        text-transform: uppercase;
+    }
+    
+    td {
+        text-align: center;
+        padding: 15px;
+        vertical-align: middle;
+        font-weight: 300;
+        font-size: 15px;
+        color: rgb(0, 0, 0);
+        border-bottom: solid 1px rgba(167, 87, 87, 0.1);
+    }
+    body {
+        background: -webkit-linear-gradient(left, #b6f3aeaf, #0ddacd4f);
+        background: linear-gradient(to right, #b6f3aeaf, #0ddacd4f);
+        font-family: 'Roboto', sans-serif;
+        height: auto;
+    }
+    #submit{
+        font-size: large;
+        font-weight: bold;
+        background-color:transparent ;
+    }
+    #submit:hover{
+        background-color:white;
+        
+    }
+</style>
+<body>
+    <form method="POST">
+        {%csrf_token%}
+        <table align="center">
+        <tr>
+            <th colspan="2"><h3 align="center">Select Option </h3></th>
+        </tr>
+        <tr>
+            <td><label for="id_enrollmentno">Enrollmentno:</label></td>
+            <td><input type="text" name="enrollmentno" value="16012101010" readonly="readonly" required="" id="id_enrollmentno"></td>
+        </tr>
+        <tr>
+            <td><label for="id_firstname">Firstname:</label></td>
+            <td><input type="text" name="firstname" value="Kashish" required="" id="id_firstname"></td>
+        </tr>
+        <tr>
+            <td><label for="id_middlename">Middlename:</label></td>
+            <td><input type="text" name="middlename" value="Kalpesh" required="" id="id_middlename"></td>
+        </tr>
+        <tr>
+            <td><label for="id_lastname">Lastname:</label></td>
+            <td><input type="text" name="lastname" value="Gandhi" required="" id="id_lastname"></td>
+        </tr>
+        <tr>
+            <td><label for="id_gender_0">Gender:</label></td>
+            <td>
+                <label for="id_gender_0"><input type="radio" name="gender" value="Male" required="" id="id_gender_0" checked="">Male</label>
+                <label for="id_gender_1"><input type="radio" name="gender" value="Female" required="" id="id_gender_1">Female</label>
+                <label for="id_gender_2"><input type="radio" name="gender" value="Others" required="" id="id_gender_2">Others</label>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_dob">Dob:</label></td>
+            <td><input type="date" name="dob" value="1999-01-29" required="" id="id_dob"></td>
+        </tr>
+        <tr>
+            <td><label for="id_phno">Phno:</label></td>
+            <td><input type="number" name="phno" value="9558271155" required="" id="id_phno"></td>
+        </tr>
+        <tr>
+            <td><label for="id_parentphno">Parentphno:</label></td>
+            <td><input type="number" name="parentphno" value="9898044388" required="" id="id_parentphno"></td>
+        </tr>
+        <tr>
+            <td> <label for="id_program">Program:</label></td>
+            <td>
+                <select name="program" id="id_program">
+                    <option value="BTECH-CSE-BDA">BTECH-CSE-BDA</option>
+                    
+                    <option value="BTECH-CSE-CBA" selected="">BTECH-CSE-CBA</option>
+                    
+                    <option value="BTECH-CSE-CS">BTECH-CSE-CS</option>
+                    
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_email">Email:</label></td>
+            <td><input type="email" name="email" value="kggandhi18@gmail.com" required="" id="id_email"></td>
+        </tr>
+        <tr>
+            <td><label for="id_hsc_or_diploma_0">Hsc or diploma:</label></td>
+            <td>
+                <label for="id_hsc_or_diploma_0"><input type="radio" name="hsc_or_diploma" value="HSC" required="" id="id_hsc_or_diploma_0">HSC</label>
+                <label for="id_hsc_or_diploma_1"><input type="radio" name="hsc_or_diploma" value="Diploma" required="" id="id_hsc_or_diploma_1">Diploma</label>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-top: 30px;">
+                <input type="submit" value="Save and Next" id="submit">
+            </td>
+        </tr>
+    
+
+    </table>
+    </form>
+</body>
+</html>

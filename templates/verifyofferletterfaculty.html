@@ -1,0 +1,152 @@
+{%extends 'facultybase.html'%} {%block content%}{%load static %}
+<style>
+    .placed
+    {
+        margin: 5px;
+        padding: 5px;
+    }
+    h1 {
+        font-size: 30px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+    
+    .tbl-header {
+        background-color: rgba(0, 0, 0, 0.281);
+    }
+    
+    .tbl-content {
+        height: 300px;
+        overflow-x: auto;
+        margin-top: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    
+    th {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 15px;
+        color: rgb(255, 255, 255);
+        text-transform: uppercase;
+    }
+    
+    td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 300;
+        font-size: 15px;
+        color: rgb(0, 0, 0);
+        border-bottom: solid 1px rgba(167, 87, 87, 0.1);
+    }
+    /* demo styles */
+    
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+    body {
+        background: -webkit-linear-gradient(left, #9deffaf8, #a4b9f1fb);
+        background: linear-gradient(to right, #9deffaf8, #a4b9f1fb;
+        font-family: 'Roboto', sans-serif;
+        height: auto;
+    }
+    
+    section {
+        margin: 100px;
+    }
+    /* follow me template */
+    /* for custom scrollbar for webkit browser*/
+    
+     ::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    $(window).on("load resize ", function() {
+        var scrollWidth=$('.tbl-content').width() - $('.tbl-content table').width();
+        $('.tbl-header').css( {
+            'padding-right': scrollWidth
+        }
+        );
+    }
+    
+    ).resize();
+</style>
+<script>
+    function handleChange1()
+    {
+        document.getElementById('com').disabled = true
+    }
+    function handleChange2()
+    {
+        document.getElementById('com').disabled = false
+    }
+</script>
+<section>
+<h2> Below mention Student have uploaded Offer Letter</h2>
+<div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+            <tr>
+                <th>E No.</th>
+                <th>Name </th>
+                <th>Company Name</th>
+                <th>Package</th>
+                <th>Bondterm</th>
+                <th>Action</th>
+                <th>Correct</th>
+                <th>Incorrect</th>
+                
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            <form method="POST">      
+                {% csrf_token %}         
+            {% for student in students %}
+            <tr>
+                <td>{{student.enrollmentno}}</td>
+                <td>{{student.firstname}} {{student.lastname}}</td>
+                <td>{{student.companyname}}</td>
+                <td> {{student.package}}</td>
+                <td> {{student.bondterm}}</td>
+                <td><a href="{% url 'openofferletter' student=student.enrollmentno %}">Download</a></td>
+                <td><input type="radio" name="{{student.enrollmentno}}status" onchange="handleChange1();" value="True" id="" required></td>
+                <td><input type="radio" name="{{student.enrollmentno}}status" onchange="handleChange2();" value="False" required></td>
+            </tr>
+            <tr>
+               <td colspan="7">
+               Add Comments <span style="color: red;">(If Incorrect)</span> :
+               <input type="textbox" name="comment" id="com" style="width: 300px;" disabled>
+               <button name="eno" value="{{student.enrollmentno}}" style="width: 100px;">Submit</button>
+               <span style="color: red;">[ Hint : Salary Mismatch, PDF Not Readable etc ]</span>   
+               </td>
+               
+            </tr>
+            <tr>
+            </tr>
+             
+            {%endfor%}
+        </form>                
+        </tbody>
+    </table>
+</div>
+</section>
+{%endblock%}

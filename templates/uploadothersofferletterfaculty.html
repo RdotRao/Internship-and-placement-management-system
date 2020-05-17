@@ -1,0 +1,184 @@
+{%extends 'facultybase.html'%} {%block content%}{%load static %}
+<head>
+    <style>
+        input[type="submit"]
+        {
+            width: 150px;
+            height: 35px;
+        }
+        input[type="textbox"]
+        {
+            width: 250px;
+            height: 35px;
+        }
+        body
+        {
+            font-size: 1.3em;
+            line-height: 1.6em;
+            
+        }
+        p,span
+        {
+            margin: 5px;
+            padding: 5px;
+        }
+        table
+        {
+            text-align: left;
+            margin: 5px;
+            padding: 5px;
+        }
+    
+    </style>
+    <script>
+        function  getBondterm(x)
+        {
+            if (document.getElementById("bondterm").disabled)
+            {
+            document.getElementById("bondterm").disabled = false
+            document.getElementById("bondterm").value =  "" 
+            }
+            else
+            {
+            document.getElementById("bondterm").disabled = true
+            document.getElementById("bondterm").value =  document.getElementById("tbond").value 
+            }
+        }
+        function  getJobRole()
+        {
+            if (document.getElementById("role").disabled)
+            {
+            document.getElementById("role").disabled = false
+            document.getElementById("role").value =  "" 
+            }
+            else
+            {
+            document.getElementById("role").disabled = true
+            document.getElementById("role").value =  document.getElementById("trole").value 
+            }
+            
+        }
+        function  getSalary()
+        {
+            if (document.getElementById("sal").disabled)
+            {
+            document.getElementById("sal").disabled = false
+            document.getElementById("sal").value =  "" 
+            }
+            else
+            {
+            document.getElementById("sal").disabled = true
+            document.getElementById("sal").value =  document.getElementById("tgsal").value 
+            }
+            
+        }
+        function  getStipend()
+        {
+            if (document.getElementById("stipend").disabled)
+            {
+            document.getElementById("stipend").disabled = false
+            document.getElementById("stipend").value =  "" 
+            }
+            else
+            {
+            document.getElementById("stipend").disabled = true
+            document.getElementById("stipend").value =  document.getElementById("tstipend").value 
+            }
+            
+        }
+    </script>
+    
+    </head>
+{% if flag %}
+{{error}}
+{% if not_form %}
+{{ msg }}
+{% else %}
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+        <td>Student Enrollment Number : </th><td><input type="textbox" name="uid"></td>
+        </tr>
+    </table>
+&nbsp;<button name="Submit" value="first" style="width: 140px;height: 45px;font-size: large;">Submit</button>&nbsp;&nbsp;<a href="/">Nevermind</a>
+</form>
+{% endif %}
+{% else %}
+<body style="padding: 5px;margin: 5px;">
+As per Our Record: <br/>
+{{ name }} have already selected <b>{{company}}</b>, while generating NOC
+<table>
+<tr>
+<th>Job Role : </th>
+<td>{{ role }}</td>
+</tr>    
+
+<tr>
+<th>Gross Package : </th>
+<td> Rs. {{ package }} lacs per annum </td>
+</tr>    
+
+<tr>
+<th>Stipend : </th>
+<td> Rs. {{ stipend }} </td>
+</tr>    
+    
+<tr>
+<th>Bond-Term : </th>
+<td>{{ bond }} year(s)</td>
+</tr>    
+
+</table>
+<p>
+If any details don't match with offer letter issued by the company, please update it here.<br/>
+Enter details as per given in offer letter
+</p>
+<form>
+    <input type="hidden" id="trole" value="{{role}}">
+    <input type="hidden" id="tgsal" value="{{package}}">
+    <input type="hidden" id="tstipend" value="{{stipend}}">
+    <input type="hidden" id="tbond" value="{{bond}}">
+</form>
+<form method="POST" style="padding: 5px;margin: 5px;" enctype=multipart/form-data>
+{% csrf_token %}
+<input type="hidden" name="uid" value="{{uid}}">
+<table>
+
+<tr>
+<th>Title</th><th>Value</th><th>Same as Above</th>
+</tr>
+
+<tr>
+<th>Company Name : </th><td><input type="textbox" name="company" value="{{company}}" disabled></td>
+</tr>
+
+<tr>
+<th>Job Role : </th><td><input type="textbox" name="role" id="role"></td><td style="text-align: center;"><input type="checkbox"    onclick="getJobRole()"></td>
+</tr>
+
+<tr>
+<th>Gross Salary : </th><td><input type="textbox" name="sal" id="sal" pattern="[0-9].[0-9]" title="Enter Valid Number" placeholder=" Salary ( Lacs / Per Annum )"    </td>
+<td style="text-align: center;"><input type="checkbox" onclick="getSalary()"></td>
+</tr>
+
+<tr>
+<th>Stipend: </th><td><input type="textbox" name="stipend" id="stipend" pattern="[0-9]"></td><td style="text-align: center;"><input type="checkbox"    onclick="getStipend()"></td>
+</tr>
+
+
+<tr>
+<th>Bond-Term: </th><td><input type="textbox" name="bondterm" id="bondterm"  pattern="[0-9].[0-9]"></td><td style="text-align: center;"><input type="checkbox"    onclick="getBondterm()"></td>
+</tr>
+
+<tr>
+<th>Offer Letter  : </th><td><input type="file" name="letter" accept=".pdf" name="" required=""></td>
+</tr>
+</table>
+<span style="color: red;">Note: You won't be able to change this data again. Fill it carefully</span><br/>
+&nbsp;<input type="submit" value="Submit">&nbsp;&nbsp;<a href="/">Nevermind</a>
+
+</form>    
+</body>
+{% endif %}
+{%endblock%}

@@ -1,0 +1,101 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    div
+    {
+
+        padding: 13px;
+        margin: 11px;
+        float: right;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    input[type=submit] 
+    {
+        padding: 3px;
+        margin: 1px;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: cornflowerblue;
+        font-size: 18px;
+        border: 1px solid darkblue;
+    }
+    .B
+    {
+        border: 1px solid black;
+        background-color:#eeeeee;
+    }
+    .A
+    {
+        padding: 9px;
+        text-align: left;
+        
+    }
+    body
+    {
+        float: right;
+
+    }
+    img
+    {
+        float: right;
+    }
+    .NOC
+    {
+        width: 46%;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 19px;
+    }
+    table,th,td
+    {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dowload NOC</title>
+</head>
+<center>
+    {% if flag %}
+    <body>
+    <div>
+        <br/> <br/>
+    <h2><center>{{ error }}.<br/><a href="/login">Home</a></center></h2>
+    </div>
+    </body>
+    {% else %}
+    <body class="NOC">
+    <table class="B">
+    <td class="A">
+    <img src="{%static 'logo.jpg' %}" width="70px" height="70px"><br/><br/><br/><br/>
+    Date: 13-11-2020<br/>
+    <center><b><u>No Objection Certificate</u></b></center><br/>
+    This is to certify that the following final year undergraduate student U.V. PATEL <br/>COLLEGE
+    OF ENGINEERING, GANPAT UNIVERSITY wishes to apply for an internship at 
+    {{ company }}    
+    The Institute has no objection in him undergoing a internship program at your prominent
+    organization during the period of 09 DECEMBER 2019 TO 10TH APRIL 2020.<br/><br/>
+        <table>
+    <tr>
+        <th>Sr. No.</th><th>Name of Students</th><th>Branch</th><th>Specialization</th>
+    </tr>
+    <tr>
+    <td>1.</td><td>{{ student_name }}</td><td>B Tech - Computer Science & Engineering</td><td>Cloud Based Application</td>
+    </tr>
+        </table><br/>
+    With best regards<br/>
+    Prof. Rahul B Shrimali<br/>
+    Training & Placement Officer<br/>
+    Department of Computer Science & Engineering, UVPCE, Ganpat University<br/>
+    Ganpat University,  Ganpat Vidyanagar, Mehsana-Gozaria Highway, PO - 384012, Gujarat, INDIA Phone Number : +91-2762-226000/+91-2762-286080<br/><br/>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name= "encode_company" value={{encode_company}}>
+    <center><a href="{% url 'openNOC' %}">Download</a>    
+    </form>
+</td>
+</table>
+</body>
+{% endif %}
+</html>

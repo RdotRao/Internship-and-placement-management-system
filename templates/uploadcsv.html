@@ -1,0 +1,15 @@
+{%extends 'facultybase.html'%} {% block title %}Upload{% endblock %} {% load static%} {% block content %} {% if user.is_staff %}
+
+<center>
+    {{ error }}
+    {{ msg }}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} Upload Student login details :
+        <input type="file" name="myfile"><br> 
+        <!--Upload Student detail :
+        <input type="file" name="myfile"><br>
+        -->
+        <button type="submit">Upload</button>
+    </form>
+</center>
+{% endif %} {% endblock %}

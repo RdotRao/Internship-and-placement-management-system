@@ -1,0 +1,58 @@
+{%extends 'login.html'%} {%load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    #id_internship_or_both
+    {
+        list-style: none;
+    }
+    #submit{
+        font-size: large;
+        font-weight: bold;
+    }
+    #submit:hover{
+        background-color: red;
+        
+    }
+</style>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form" >
+    <form method="POST">
+        <h3 align="center">Select Option </h3>
+        {%csrf_token%}
+        <table>
+        <tr>
+            <td width="30%"><input type="radio" name="internship_or_both" id="id_internship_or_both_0" value="Internship" required></td>
+            <td style="text-align: left; font-weight: bold; ">Internship</td>
+        </tr>
+        <tr>
+            <td width="30%"><input type="radio" name="internship_or_both" id="id_internship_or_both_1" value="Both" required></td>
+            <td style="text-align: left; font-weight: bold;">Both ( Internship + Placement )</td>
+        </tr>
+        <br>
+    
+        <tr>
+            <td colspan="2" style="padding-top: 30px; line-height: 1.5;">
+                By clicking Submit, you agree to our<br> <a href="yourLink"  target="popup"  onclick="window.open('tnc','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;">
+                Terms and Condition.</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-top: 30px;">
+                <input type="submit" value="Submit" id="submit">
+            </td>
+        </tr>
+    </table>
+    </form>
+    </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
