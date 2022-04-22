@@ -15,7 +15,7 @@ pandas==0.25.3
 Pillow>=6.2.2
 psycopg2==2.8.4
 pylint==2.4.4
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 python-dateutil==2.8.1
 pytz==2019.3
 reportlab==3.5.34
